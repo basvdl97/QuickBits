@@ -32,11 +32,12 @@ def find_popup_slice(html):
 
     return starting_index, ending_index
 
+
 def find_variable_name(html, name_start):
     variable_pattern = "var "
     pattern = variable_pattern + name_start
 
-    starting_index = html.find(pattern) + len(variable_pattern)
+    starting_index = html.find(pattern) + 4
     tmp_html = html[starting_index:]
     ending_index = tmp_html.find(" =") + starting_index
 
@@ -54,8 +55,6 @@ def custom_code(popup_variable_name, map_variable_name):
 
                 console.log("Latitude: " + e.latlng.lat.toFixed(4));
                 console.log("Longitude: " + e.latlng.lng.toFixed(4));
-
-
             }
             // end custom code
     ''' % (popup_variable_name, map_variable_name)
@@ -78,7 +77,7 @@ if __name__ == "__main__":
     html = None
     with open(map_filepath, 'r') as mapfile:
         html = mapfile.read()
-    
+
     map_variable_name = find_variable_name(html, "map_")
     popup_variable_name = find_variable_name(html, "lat_lng_popup_")
 
