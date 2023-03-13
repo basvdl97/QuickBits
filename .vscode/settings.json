@@ -1,0 +1,7 @@
+{
+    "editor.fontSize": 40,
+    "terminal.integrated.fontSize": 20,
+    "debug.console.fontSize": 14,
+    "markdown.preview.fontSize": 14,
+    "scm.inputFontSize": 13
+}
